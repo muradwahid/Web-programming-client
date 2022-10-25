@@ -11,7 +11,7 @@ const NavBar = () => {
         <div className="flex items-center gap-4 md:text-[30px] text-[20px]">
           <CiLight />
           <NavLink to='/'>
-            <h3>Learn-web-programming</h3>
+            <h3>Web-Pro</h3>
           </NavLink>
         </div>
         <div className="lg:hidden" onClick={() => setOpen(!open)}>
