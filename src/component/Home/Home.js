@@ -1,13 +1,27 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import Header from '../Shared/Header/Header';
+import CourseCategory from './CourseCategory/CourseCategory';
 import HomeCart from './HomeCart/HomeCart';
 
 const Home = () => {
+    const [categories, setCategories] = useState([]);
+    useEffect(() => {
+        fetch("http://localhost:5000/categories")
+            .then(res => res.json())
+        .then(data=>setCategories(data))
+    },[])
     return (
-        <div>
-            <Header />
-            <HomeCart/>
+      <div>
+        <Header />
+        <HomeCart />
+        <div className='w-4/5 mx-auto flex gap-36 my-28'>
+          {categories.map((category) => (
+            <CourseCategory key={category.id} category={category} />
+          ))}
         </div>
+      </div>
     );
 };
 
