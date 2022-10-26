@@ -42,22 +42,22 @@ const CourseDetails = () => {
               alt=""
             />
           </div>
-          <div className='mt-10 grid md:grid-cols-2'>
+          <div className="mt-10 grid md:grid-cols-2 gap-24">
             <div className="mt-0 border border-cyan-500 rounded-xl p-2 mt-4">
               <h3 className="text-3xl font-semibold text-cyan-700">
                 Course Content
               </h3>
               <div>
                 {course_content.map((course) => (
-                  <p className="border border-cyan-600 my-2 p-2 rounded-md bg-cyan-300">
+                  <p className="border border-cyan-600 my-2 p-2 rounded-md bg-cyan-300   transition duration-200 hover:bg-cyan-200 cursor-pointer ">
                     {course}
                   </p>
                 ))}
               </div>
-                    </div>
-                    <div>
-                        <Payment course={course} />
-                    </div>
+            </div>
+            <div>
+              <Payment course={course} />
+            </div>
           </div>
         </div>
         <div></div>
