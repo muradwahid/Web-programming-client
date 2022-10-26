@@ -7,6 +7,7 @@ import Home from "../component/Home/Home";
 import Login from "../component/Login/Login";
 import Register from "../component/Login/Register";
 import Main from "../Layout/Main";
+import PrivetRoutes from "./PrivetRoutes/PrivetRoutes";
 
 export const router = createBrowserRouter([
   {
@@ -25,8 +26,13 @@ export const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <CourseDetails />,
-        loader: ({ params }) => fetch(`http://localhost:5000/details/${params.id}`),
+        element: (
+          <PrivetRoutes>
+            <CourseDetails />
+          </PrivetRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
       { path: "/register", element: <Register /> },
       { path: "/login", element: <Login /> },
