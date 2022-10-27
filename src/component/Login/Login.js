@@ -7,7 +7,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { user, signIn, popupSignIn } = useContext(AuthContext);
+  const {signIn, popupSignIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
     const location = useLocation();
@@ -21,7 +21,6 @@ const Login = () => {
     signIn(email, password)
       .then((result) => { 
         const user = result.user;
-        console.log(user);
         form.reset();
         navigate(from, { replace: true });
       })

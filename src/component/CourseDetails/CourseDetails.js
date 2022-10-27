@@ -4,7 +4,7 @@ import Payment from '../Shared/Payment/Payment';
 
 const CourseDetails = () => {
     const course = useLoaderData()
-    const {title,title_details,thumbnail_url,details,course_details,course_content,id }=course;
+    const {title,title_details,thumbnail_url,course_details,course_content }=course;
     // console.log(course);
     return (
       <div className="w-4/5 mx-auto my-10">
