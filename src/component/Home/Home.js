@@ -8,7 +8,7 @@ import HomeCart from './HomeCart/HomeCart';
 const Home = () => {
     const [categories, setCategories] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:5000/categories")
+        fetch("https://assignmenttenserver.vercel.app/categories")
             .then(res => res.json())
         .then(data=>setCategories(data))
     },[])

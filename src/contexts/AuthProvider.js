@@ -4,7 +4,6 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
-  sendEmailVerification,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
@@ -48,16 +47,14 @@ const AuthProvider = ({ children }) => {
     setLoading(false);
     return signOut(auth);
   };
-  const verifyEmail = () => {
-    return sendEmailVerification(auth.currentUser);
-  };
+
   const authInfo = {
     user,
+    setUser,
     popupSignIn,
     signIn,
     createUser,
     logOut,
-    verifyEmail,
     updateUserProfile,
     setLoading,
     loading,

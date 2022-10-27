@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Register = () => {
-  const { createUser, verifyEmail, setLoading, updateUserProfile } =
+  const { createUser, setLoading, updateUserProfile } =
     useContext(AuthContext);
   const [error, setError] = useState(null);
   const navigation = useNavigate();
@@ -36,8 +36,6 @@ const Register = () => {
         const user = result.user;
         form.reset();
         handleUserProfileUpdate(fullName,photoURL)
-        handleEmailVerify();
-        toast.success("Sent a verification link in your email address.");
         navigation("/login");
       })
       .catch((error) => console.error("error", error))
@@ -55,11 +53,6 @@ const Register = () => {
         .then(() => {})
         .then((error) => console.log(error));
     };
-   const handleEmailVerify = () => {
-     verifyEmail()
-       .then(() => {})
-       .catch((error) => console.log(error));
-   };
   return (
     <div className="font-sans antialiased bg-grey-lightest">
       <div className="w-full bg-grey-lightest ">

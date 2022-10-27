@@ -3,12 +3,13 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 import { AiFillGithub, AiFillGoogleCircle } from "react-icons/ai";
-import { GoogleAuthProvider } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn, popupSignIn } = useContext(AuthContext);
+  const { signIn, popupSignIn, setUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
+  const githubProvider = new GithubAuthProvider();
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const navigate = useNavigate();
@@ -21,13 +22,7 @@ const Login = () => {
       .then((result) => { 
         const user = result.user;
         form.reset();
-                if (user.emailVerified) {
-                  navigate(from, { replace: true });
-                } else {
-                  toast.error(
-                    "Your email is not verified.Please verify your email address or check inbox."
-                  );
-                }
+        navigate(from, { replace: true });
       })
       .catch(error => {
       console.log(error)
@@ -36,10 +31,20 @@ const Login = () => {
   }
   const googleSignIn = () => {
     popupSignIn(googleProvider)
+      .then((result) => {
+        const user = result.user;
+        navigate(from, { replace: true });
+      })
+      .catch((error) => console.log(error));
+  }
+  const githubSignIn = () => {
+    popupSignIn(githubProvider)
       .then(result => {
         const user = result.user;
+        setUser(user);
+        navigate(from, { replace: true });
       })
-    .then(error=>console.log(error))
+    .catch(error=>console.log(error))
   }
   return (
     <div className="flex items-center min-h-screen p-4 bg-gray-100  lg:justify-center">
@@ -124,7 +129,10 @@ const Login = () => {
                     Google
                   </span>
                 </Link>
-                <Link className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-blue-500 rounded-md group hover:bg-blue-500 focus:outline-none">
+                <Link
+                  onClick={githubSignIn}
+                  className="flex items-center justify-center px-4 py-2 space-x-2 transition-colors duration-300 border border-blue-500 rounded-md group hover:bg-blue-500 focus:outline-none"
+                >
                   <span className="text-gray-800 group-hover:text-white">
                     <AiFillGithub className="text-[20px]" />
                   </span>

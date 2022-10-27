@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { CiLight, CiUser } from "react-icons/ci";
-import { Bars3Icon, MoonIcon, SunIcon, XMarkIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { Link, NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../contexts/AuthProvider";
@@ -39,9 +39,6 @@ const NavBar = () => {
           </NavLink>
           <NavLink className="hover:text-fuchsia-400" to="/allcourse">
             All Course
-          </NavLink>
-          <NavLink className="hover:text-fuchsia-400" to="/faq">
-            FAQ
           </NavLink>
           <NavLink className="hover:text-fuchsia-400" to="/blog">
             Blog
