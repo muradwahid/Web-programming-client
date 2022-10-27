@@ -4,12 +4,12 @@ import Payment from '../Shared/Payment/Payment';
 
 const CourseDetails = () => {
     const course = useLoaderData()
-    const {title,title_details,thumbnail_url,details,course_details,course_content }=course;
+    const {title,title_details,thumbnail_url,details,course_details,course_content,id }=course;
     // console.log(course);
     return (
       <div className="w-4/5 mx-auto my-10">
         <div>
-          <div className="flex">
+          <div className="grid md:grid-cols-2 gap-7">
             <div>
               <h3 className="text-3xl font-semibold text-gray-700 mb-6">
                 {title}
@@ -48,9 +48,12 @@ const CourseDetails = () => {
                 Course Content
               </h3>
               <div>
-                {course_content.map((course) => (
-                  <p className="border border-cyan-600 my-2 p-2 rounded-md bg-cyan-300   transition duration-200 hover:bg-cyan-200 cursor-pointer ">
-                    {course}
+                {course_content.map((content, idx) => (
+                  <p
+                    key={idx}
+                    className="border border-cyan-600 my-2 p-2 rounded-md bg-cyan-300   transition duration-200 hover:bg-cyan-200 cursor-pointer "
+                  >
+                    {content}
                   </p>
                 ))}
               </div>
