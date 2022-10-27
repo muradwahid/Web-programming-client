@@ -7,7 +7,7 @@ import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { signIn, popupSignIn, setUser } = useContext(AuthContext);
+  const { user, signIn, popupSignIn } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
     const location = useLocation();
@@ -21,7 +21,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => { 
         const user = result.user;
-        setUser(user)
+        console.log(user);
         form.reset();
         navigate(from, { replace: true });
       })
@@ -34,7 +34,6 @@ const Login = () => {
     popupSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
-        setUser(user)
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
@@ -43,7 +42,6 @@ const Login = () => {
     popupSignIn(githubProvider)
       .then(result => {
         const user = result.user;
-        setUser(user);
         navigate(from, { replace: true });
       })
     .catch(error=>console.log(error))

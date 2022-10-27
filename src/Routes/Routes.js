@@ -16,7 +16,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
-    errorElement:<ErrorPage/>,
+    errorElement: <ErrorPage />,
     children: [
       { path: "/", element: <Home /> },
       {
@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/blog",
-        element:<Blog/>
+        element: <Blog />,
       },
       {
         path: "/details/:id",
@@ -52,7 +52,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/checkout/:id",
-        element: <CheckOut />,
+        element: (
+          <PrivetRoutes>
+            <CheckOut />
+          </PrivetRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`https://assignmenttenserver.vercel.app/details/${params.id}`),
       },

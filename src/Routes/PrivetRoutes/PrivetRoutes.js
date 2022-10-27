@@ -7,16 +7,19 @@ const PrivetRoutes = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   if (loading) {
     return (
-      <BallTriangle
-        height={100}
-        width={100}
-        radius={5}
-        color="#4fa94d"
-        ariaLabel="ball-triangle-loading"
-        wrapperClass={{}}
-        wrapperStyle=""
-        visible={true}
-      />
+      <div className="absolute left-1/2">
+        <BallTriangle
+          height={100}
+          width={100}
+          left={500}
+          radius={5}
+          color="#4fa94d"
+          ariaLabel="ball-triangle-loading"
+          wrapperClass={{}}
+          wrapperStyle=""
+          visible={true}
+        />
+      </div>
     );
   }
   if (user) {

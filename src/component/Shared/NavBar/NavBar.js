@@ -49,19 +49,24 @@ const NavBar = () => {
           {user?.uid ? (
             <NavLink className="flex gap-4 items-center">
               {user?.displayName}
-              {user?.photoURL ? (
-                <img
-                  onClick={() => setToggle(!toggle)}
-                  className="rounded-full h-10 w-10"
-                  src={user.photoURL}
-                  alt=""
-                />
-              ) : (
-                <CiUser
-                  onClick={() => setToggle(!toggle)}
-                  className="rounded-full h-8 w-8 bg-cyan-500"
-                />
-              )}
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user?.displayName}
+              >
+                {user?.photoURL ? (
+                  <img
+                    onClick={() => setToggle(!toggle)}
+                    className="rounded-full h-10 w-10"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                ) : (
+                  <CiUser
+                    onClick={() => setToggle(!toggle)}
+                    className="rounded-full h-8 w-8 bg-cyan-500"
+                  />
+                )}
+              </div>
             </NavLink>
           ) : (
             <>

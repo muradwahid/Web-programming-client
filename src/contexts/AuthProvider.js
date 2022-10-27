@@ -15,7 +15,7 @@ export const AuthContext = createContext();
 
 const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const popupSignIn = (provider) => {
     setLoading(false);
@@ -30,9 +30,7 @@ const AuthProvider = ({ children }) => {
   };
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser === null) {
-        setUser(currentUser);
-      }
+      setUser(currentUser);
       setLoading(false);
     });
     return () => {
