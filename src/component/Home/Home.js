@@ -16,7 +16,7 @@ const Home = () => {
       <div>
         <Header />
         <HomeCart />
-        <div className='w-4/5 mx-auto flex gap-36 my-28'>
+        <div className='w-4/5 mx-auto grid lg:grid-cols-3 md:grid-cols-2 gap-36 my-28'>
           {categories.map((category) => (
             <CourseCategory key={category.id} category={category} />
           ))}

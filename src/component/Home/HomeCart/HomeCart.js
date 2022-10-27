@@ -2,7 +2,7 @@ import React from 'react';
 import { FaWalking, FaArrowsAltH, FaHandshake} from "react-icons/fa";
 const HomeCart = () => {
     return (
-      <div className="w-4/5 mx-auto grid lg:grid-cols-3 gap-10 mt-[-100px]">
+      <div className="w-4/5 mx-auto grid lg:grid-cols-3 gap-10 lg:mt-[-100px] md:mt-[-50px] ">
         <div className="text-center bg-slate-100 h-[360px] shadow-lg shadow-slate-400 px-16 py-9 rounded-md">
           <FaWalking className="text-[50px] mx-auto mb-5 text-cyan-600" />
           <p className="font-bold text-2xl mb-5 text-gray-700">

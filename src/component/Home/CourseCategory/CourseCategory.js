@@ -5,7 +5,7 @@ const CourseCategory = ({ category }) => {
     const {id,name,img} = category;
     return (
       <div className="bg-slate-100 p-4 rounded-xl">
-        <div className="h-52">
+        <div className="md:h-52">
           <img className=" w-full rounded-xl" src={img} alt="" />
         </div>
         <div className="my-4 flex flex-col">
