@@ -2,8 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const CourseCart = ({ course }) => {
-    const {thumbnail_url,title,title_details,id } = course;
-    console.log(course);
+    const {thumbnail_url,title,id } = course;
     return (
       <div className="bg-slate-100 p-4 rounded-xl">
         <div className="h-52">
