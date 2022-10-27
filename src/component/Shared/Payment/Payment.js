@@ -3,10 +3,7 @@ import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 
 const Payment = ({course}) => {
-    const { title, thumbnail_url, price } = course;
-    const checkOut = () => {
-        toast.success("Your payment is complete.")
-    }
+    const { title, thumbnail_url, price,id } = course;
     return (
       <div className="bg-cyan-100 p-6 rounded-lg">
         <h2 className="text-3xl font-semibold text-gray-600">Your Order</h2>
@@ -31,12 +28,12 @@ const Payment = ({course}) => {
             <p>${price}</p>
           </div>
         </div>
-        <div
-          onClick={checkOut}
-          className="bg-cyan-700 text-center py-3 text-md font-semibold text-white rounded-lg transition duration-300 hover:bg-cyan-500"
+        <Link
+          className="bg-cyan-700 flex justify-center py-3 text-md font-semibold text-white rounded-lg transition duration-300 hover:bg-cyan-500"
+          to={`/checkout/${id}`}
         >
-          <Link>Order Now</Link>
-        </div>
+          Order Now
+        </Link>
       </div>
     );
 };

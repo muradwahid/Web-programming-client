@@ -29,7 +29,10 @@ const Login = () => {
                   );
                 }
       })
-    .then(error=>console.log("error",error))
+      .catch(error => {
+      console.log(error)
+      toast.error("Invalid email or password");
+    })
   }
   const googleSignIn = () => {
     popupSignIn(googleProvider)

@@ -13,7 +13,6 @@ const NavBar = () => {
     logOut();
     setToggle(false);
   }
-  console.log(user);
   return (
     <nav className="bg-cyan-600 py-6">
       <div className="w-4/5 mx-auto flex justify-between items-center text-white">
