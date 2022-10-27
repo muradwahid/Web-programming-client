@@ -1,75 +1,62 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
-import "./CheckOut.css"
+import toast from 'react-hot-toast';
+import { Link, useLoaderData } from 'react-router-dom';
+
 const CheckOut = () => {
-    const courses = useLoaderData();
-    const { thumbnail_url ,price,title} = courses;
-   const Item = (props) => (
-     <div className="item-container">
-       <div className="item-image">
-         <img src={props.img} />
-         <div className="item-details">
-           <h3 className="item-name"> {props.name} </h3>
-           <h2 className="item-price"> {props.price} </h2>
-         </div>
-       </div>
-     </div>
-   );
+      const courses = useLoaderData();
+  const { thumbnail_url, price, title } = courses;
+  const confirmation = () => {
+    toast.success("Successfully Payment complete.")
+  }
+  return (
+    <div className="w-2/5 mx-auto flex gap-6 bg-cyan-700 p-4 rounded-xl my-14 h-[400px] border">
+      <div className="w-[260px]">
+        <img
+          className="h-[280px] w-[260px] rounded-lg mb-3"
+          src={thumbnail_url}
+          alt=""
+        />
+        <p className="font-semibold text-white mb-2">{title}</p>
+        <p className="font-bold text-center text-white">
+          Total Price: ${price}
+        </p>
+      </div>
+      <div className="w-[260px]">
+        <div>
+          <p className="text-white font-semibold my-4">CREDIT CARD CHECKOUT</p>
 
-   const Checkout = (props) => (
-     <div className="checkout">
-       <div className="checkout-container">
-         <h3 className="heading-3">Credit card checkout</h3>
-         <Input label="Cardholder's Name" type="text" name="name" />
-         <Input
-           label="Card Number"
-           type="number"
-           name="card_number"
-           imgSrc="https://seeklogo.com/images/V/visa-logo-6F4057663D-seeklogo.com.png"
-         />
-         <div className="row">
-           <div className="col">
-             <Input label="Expiration Date" type="month" name="exp_date" />
-           </div>
-           <div className="col">
-             <Input label="CVV" type="number" name="cvv" />
-           </div>
-         </div>
-         <Button text="Place order" />
-       </div>
-     </div>
-   );
-
-   const Input = (props) => (
-     <div className="input">
-       <label>{props.label}</label>
-       <div className="input-field">
-         <input type={props.type} name={props.name} />
-         <img src={props.imgSrc} />
-       </div>
-     </div>
-   );
-
-   const Button = (props) => (
-     <button className="checkout-btn" type="button">
-       {props.text}
-     </button>
-   );
-       return (
-         <div className="app-container">
-           <div className="grid grid-cols-2">
-             <div className="text-center text-gray-700 font-semibold">
-               <img className='w-full h-4/5' src={thumbnail_url} alt="" />
-                       <p className='mt-3 text-[16px]'>{title}</p>
-                       <h4 className='text-xl'>${price}</h4>
-             </div>
-             <div className="">
-               <Checkout />
-             </div>
-           </div>
-         </div>
-       );
-
+          <div className="my-4">
+            <small className="text-white">CARDHOLDER'S NAME</small>
+            <input className="w-full py-1 rounded-lg" type="text" />
+          </div>
+          <div>
+            <small className="text-white">CARD NUMBER</small>
+            <input className="w-full py-1 rounded-lg" type="text" />
+          </div>
+          <div className="flex gap-4 mt-4 mb-12">
+            <div className="w-9/12">
+              <small className="text-white">EXPIRATION DATE</small>
+              <input
+                className="w-full rounded-md"
+                type="text"
+                placeholder="--- - ---- --"
+              />
+            </div>
+            <div className="w-1/4">
+              <small className="text-white">CVV</small>
+              <input className="w-full rounded-md" type="text" />
+            </div>
+          </div>
+          <Link
+            onClick={confirmation}
+            className="bg-white py-2 px-6 font-semibold rounded-md mt-6 hover:text-cyan-600"
+          >
+            PLACE ORDER
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default CheckOut;

@@ -21,6 +21,7 @@ const Login = () => {
     signIn(email, password)
       .then((result) => { 
         const user = result.user;
+        setUser(user)
         form.reset();
         navigate(from, { replace: true });
       })
@@ -33,6 +34,7 @@ const Login = () => {
     popupSignIn(googleProvider)
       .then((result) => {
         const user = result.user;
+        setUser(user)
         navigate(from, { replace: true });
       })
       .catch((error) => console.log(error));
@@ -102,6 +104,9 @@ const Login = () => {
               >
                 Remember me
               </label>
+            </div>
+            <div>
+              <p>Don't have an account please <Link to="/register" className="underline text-red-400">Register</Link></p>
             </div>
             <div>
               <button

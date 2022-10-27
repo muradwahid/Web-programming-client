@@ -1,4 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
+
+body {
+    background: #f28a4b;
+    width: 100%;
+    font-family: 'Raleway', sans-serif;
+    letter-spacing: 2px;
+}
+
 .no-gutters {
     padding-left: 0;
 }
@@ -45,7 +53,7 @@
 .item-price {
     font-size: 25px;
     font-weight: 700;
-    color: #0891B2;
+    color: #0b8a6d;
 }
 
 .checkout {
